@@ -20,11 +20,41 @@ function createPixelBoard() {
 
 createPixelBoard();
 
-let color1Button = document.querySelector('#color1');
 
-color1Button.addEventListener('click',selectColor1)
+let colorsList = document.querySelectorAll('.color');
+let color1 = document.querySelector('#color1');
+let color2 = document.querySelector('#color2');
+let color3 = document.querySelector('#color3');
+let color4 = document.querySelector('#color4');
 
-
-function selectColor1(){
-
+color1.addEventListener('click', function (){
+  for (let index = 0; index < colorsList.length; index += 1) {
+    colorsList[index].classList.remove('selected');
+  }
+  color1.classList.add('selected');
 }
+);
+
+color2.addEventListener('click', function (){
+  for (let index = 0; index < colorsList.length; index += 1) {
+    colorsList[index].classList.remove('selected');
+  }
+  color2.classList.add('selected');
+}
+);
+
+color3.addEventListener('click', function (){
+  for (let index = 0; index < colorsList.length; index += 1) {
+    colorsList[index].classList.remove('selected');
+  }
+  color3.classList.add('selected');
+}
+);
+
+color4.addEventListener('click', function (){
+  for (let index = 0; index < colorsList.length; index += 1) {
+    colorsList[index].classList.remove('selected');
+  }
+  color4.classList.add('selected');
+}
+);
