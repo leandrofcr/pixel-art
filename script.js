@@ -1,4 +1,8 @@
-// window.onload ( define a cor preto)
+window.onload = initialSetup;
+
+function initialSetup(){
+  color1.classList.add('selected');
+}
 
 
 function createPixelBoard() {
