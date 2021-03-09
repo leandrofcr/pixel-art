@@ -2,14 +2,14 @@
 
 
 function createPixelBoard() {
-  let pixelBoard = document.querySelector('.pixel-board');
+  let pixelBoard = document.querySelector('#pixel-board');
 
   for (let index = 0; index < 5; index += 1) {
     let pixelRow = document.createElement('div');
     pixelRow.className = 'pixel-row';
     pixelBoard.appendChild(pixelRow);
 
-    let pixelRowRef = document.querySelector('.pixel-board').lastChild;
+    let pixelRowRef = document.querySelector('#pixel-board').lastChild;
     for (let index = 0; index < 5; index += 1) {
       let pixel = document.createElement('div');
       pixel.className = 'pixel';
@@ -19,3 +19,12 @@ function createPixelBoard() {
 }
 
 createPixelBoard();
+
+let color1Button = document.querySelector('#color1');
+
+color1Button.addEventListener('click',selectColor1)
+
+
+function selectColor1(){
+
+}

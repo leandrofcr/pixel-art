@@ -35,7 +35,7 @@
 
 }
 
-.pixel-board {
+#pixel-board {
   margin-top: 150px;
   clear: both;
   display: table;
@@ -53,6 +53,7 @@
   border: solid 1px black;
   width: 40px;
   height: 40px;
+  background-color: white;
 }
 
 
