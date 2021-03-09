@@ -55,12 +55,15 @@ color4.addEventListener('click', function () {
   color4.classList.add('selected');
 });
 
-let selectedColor = document.querySelector('.selected');
+// let selectedColor = document.querySelector('.selected');
 let pixelList = document.querySelectorAll('.pixel');
 
 
-pixelList.forEach(function(elem) {
-  elem.addEventListener("click", function() {
-    elem.style.backgroundColor = 'red'; //temp
+
+pixelList.forEach(function (elem) {
+  elem.addEventListener("click", function () {
+    elem.style.backgroundColor = window.getComputedStyle(document.querySelector('.selected'), null).getPropertyValue('background-color');
   });
 });
+
+// referencia para a funcao acima disponível em: https://stackoverflow.com/questions/1887104/how-to-get-the-background-color-of-an-html-element
