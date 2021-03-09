@@ -4,27 +4,62 @@
   height: 40px;
   float: left;
   margin-left: 10px;
+  /* display: table; */
 }
-#color1{
+
+#color1 {
   background-color: black;
-  
+  /* display: table-row; */
+
 
 }
 
-#color2{
+#color2 {
   background-color: red;
+  /* display: table-row; */
+
 
 }
 
-#color3{
+#color3 {
   background-color: blue;
+  /* display: table-row; */
+
 
 }
 
-#color4{
+#color4 {
   background-color: green;
+  /* display: table-row;
+   */
 
 }
 
+.pixel-board {
+  margin-top: 150px;
+  clear: both;
+  display: table;
+}
+
+.pixel-row {
+  display: row;
+  border: solid 1px black;
+  height: 40px;
+
+}
+
+.pixel {
+  display: table-cell;
+  border: solid 1px black;
+  width: 40px;
+  height: 40px;
+}
 
 
+/* 
+.pixel {
+  border: solid 1px black;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+} */
