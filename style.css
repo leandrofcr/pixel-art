@@ -34,6 +34,7 @@
 #clear-board {
   margin-top: 50px;
   padding: 5px;
+  clear: both;
 }
 
 #pixel-board {
@@ -54,4 +55,15 @@
   width: 40px;
   height: 40px;
   background-color: white;
+}
+
+#board-size{
+  width: 70px;
+  height: 20px;
+  font-size: 20px;
+  display: inline-block;
+}
+#generate-board{
+  width: 100px;
+  display: inline-block;
 }
