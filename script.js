@@ -55,10 +55,7 @@ color4.addEventListener('click', function () {
   color4.classList.add('selected');
 });
 
-// let selectedColor = document.querySelector('.selected');
 let pixelList = document.querySelectorAll('.pixel');
-
-
 
 pixelList.forEach(function (elem) {
   elem.addEventListener("click", function () {
@@ -67,3 +64,11 @@ pixelList.forEach(function (elem) {
 });
 
 // referencia para a funcao acima disponível em: https://stackoverflow.com/questions/1887104/how-to-get-the-background-color-of-an-html-element
+
+let resetButton = document.getElementById('clear-board');
+
+resetButton.addEventListener('click', function () {
+  for (let index = 0; index < pixelList.length; index += 1) {
+    pixelList[index].style.backgroundColor = 'white';
+  }
+})
