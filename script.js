@@ -4,39 +4,71 @@ function initialSetup() {
   color1.classList.add('selected');
 }
 
-// const boardSize = document.getElementById('board-size').value;
 
-const sizeButton = document.getElementById('generate-board');
+let sizeButton = document.getElementById('generate-board');
+sizeButton.addEventListener('click', createPixelBoard)
 
-// sizeButton.addEventListener('click',function saveSize(){
-  
-// })
 
 function createPixelBoard() {
+  let boardSize = document.getElementById('board-size').value;
+  console.log(boardSize);
+
   let pixelBoard = document.querySelector('#pixel-board');
 
-  for (let index = 0; index < 5; index += 1) {
+  for (let index = 0; index < boardSize; index += 1) {
     let pixelRow = document.createElement('div');
     pixelRow.className = 'pixel-row';
     pixelBoard.appendChild(pixelRow);
 
+
     let pixelRowRef = document.querySelector('#pixel-board').lastChild;
-    for (let index = 0; index < 5; index += 1) {
+    for (let index2 = 0; index2 < boardSize; index2 += 1) {
       let pixel = document.createElement('div');
       pixel.className = 'pixel';
       pixelRowRef.appendChild(pixel);
     }
   }
-}
 
-createPixelBoard();
+  let pixelList = document.querySelectorAll('.pixel');
+
+  pixelList.forEach(function (elem) {
+    elem.addEventListener('click', function () {
+      elem.style.backgroundColor = window.getComputedStyle(document.querySelector('.selected'), null).getPropertyValue('background-color');
+    });
+  });
+};
 
 
-const colorsList = document.querySelectorAll('.color');
-const color1 = document.querySelector('#color1');
-const color2 = document.querySelector('#color2');
-const color3 = document.querySelector('#color3');
-const color4 = document.querySelector('#color4');
+
+
+// function createPixelBoard() {
+//   let pixelBoard = document.querySelector('#pixel-board');
+
+//   for (let index = 0; index < 5; index += 1) {
+//     let pixelRow = document.createElement('div');
+//     pixelRow.className = 'pixel-row';
+//     pixelBoard.appendChild(pixelRow);
+
+//     let pixelRowRef = document.querySelector('#pixel-board').lastChild;
+//     for (let index = 0; index < 5; index += 1) {
+//       let pixel = document.createElement('div');
+//       pixel.className = 'pixel';
+//       pixelRowRef.appendChild(pixel);
+//     }
+//   }
+// }
+
+// createPixelBoard();
+
+
+
+// cria um EventListener para a paleta de cores. Aplica classe .selected
+
+let colorsList = document.querySelectorAll('.color');
+let color1 = document.querySelector('#color1');
+let color2 = document.querySelector('#color2');
+let color3 = document.querySelector('#color3');
+let color4 = document.querySelector('#color4');
 
 color1.addEventListener('click', function () {
   for (let index = 0; index < colorsList.length; index += 1) {
@@ -66,21 +98,23 @@ color4.addEventListener('click', function () {
   color4.classList.add('selected');
 });
 
-let pixelList = document.querySelectorAll('.pixel');
+// let pixelList = document.getElementsByClassName('pixel');
 
-pixelList.forEach(function (elem) {
-  elem.addEventListener('click', function () {
-    elem.style.backgroundColor = window.getComputedStyle(document.querySelector('.selected'), null).getPropertyValue('background-color');
-  });
-});
+// pixelList.forEach(function (elem) {
+//   elem.addEventListener('click', function () {
+//     elem.style.backgroundColor = window.getComputedStyle(document.querySelector('.selected'), null).getPropertyValue('background-color');
+//   });
+// });
 
-// referencia para a funcao acima disponível em: https://stackoverflow.com/questions/1887104/how-to-get-the-background-color-of-an-html-element
+
+
+// cria um eventListener para o botão de limpar o board. Aplica background = branco.
 
 let resetButton = document.getElementById('clear-board');
 
 resetButton.addEventListener('click', function () {
+  let pixelList = document.querySelectorAll('.pixel');
   for (let index = 0; index < pixelList.length; index += 1) {
     pixelList[index].style.backgroundColor = 'white';
   }
 })
-
