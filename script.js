@@ -1,65 +1,65 @@
 // Define a cor preta como inicial ao carregara página
-window.onload = initialSetup;
 
 function initialSetup() {
   color1.classList.add('selected');
 }
+window.onload = initialSetup;
 
-let sizeButton = document.getElementById('generate-board');
-sizeButton.addEventListener('click', createPixelBoard2)
+function selectedColorEvent(elem) {
+  elem.addEventListener('click', function changeColor() {
+    const backgroundRef = window.getComputedStyle(document.querySelector('.selected'), null);
+    elem.style.backgroundColor = backgroundRef.getPropertyValue('background-color');
+  });
+}
 
-// Criar o board padrao de tamanho 5x5
+// Cria um board de tamanho nxn. Onde n é o parametro de entrada
 
-function createPixelBoardDefault() {
-  let pixelBoard = document.querySelector('#pixel-board');
+function createBoard(boardSize) {
+  const pixelBoard = document.querySelector('#pixel-board');
 
-  for (let index = 0; index < 5; index += 1) {
-    let pixelRow = document.createElement('div');
+  for (let index = 0; index < boardSize; index += 1) {
+    const pixelRow = document.createElement('div');
     pixelRow.className = 'pixel-row';
     pixelBoard.appendChild(pixelRow);
-    let pixelRowRef = document.querySelector('#pixel-board').lastChild;
-    for (let index2 = 0; index2 < 5; index2 += 1) {
-      let pixel = document.createElement('div');
+
+    const pixelRowRef = document.querySelector('#pixel-board').lastChild;
+    for (let index2 = 0; index2 < boardSize; index2 += 1) {
+      const pixel = document.createElement('div');
       pixel.className = 'pixel';
       pixelRowRef.appendChild(pixel);
     }
   }
+}
 
-  let pixelList = document.querySelectorAll('.pixel');
-  pixelList.forEach(function (elem) {
-    elem.addEventListener('click', function () {
-      elem.style.backgroundColor = window.getComputedStyle(document.querySelector('.selected'), null).getPropertyValue('background-color');
-    });
-  });
-};
-createPixelBoardDefault();
+// Criar o board padrao de tamanho 5x5
 
+function defaultBoard() {
+  createBoard(5);
+  const pixelList = document.querySelectorAll('.pixel');
+  pixelList.forEach(selectedColorEvent);
+}
+defaultBoard();
+
+// Deleta o board atual para criacao de um com tamanho personalizado
+
+function deleteBoard() {
+  const getBoard = document.getElementById('pixel-board');
+  getBoard.innerHTML = '';
+}
 
 // Cria o board conforme tamanho inserido no input
 
-function createPixelBoard2() {
+function customBoard() {
   deleteBoard();
-  let inputSize = document.getElementById('board-size').value;
-  let pixelBoard = document.querySelector('#pixel-board');
+  const inputSize = document.getElementById('board-size').value;
+
 
   if (inputSize === '') {
     alert('Board inválido!')
   }
   boardSize = checkBoardSize(inputSize);
 
-  for (let index = 0; index < boardSize; index += 1) {
-    let pixelRow = document.createElement('div');
-    pixelRow.className = 'pixel-row';
-    pixelBoard.appendChild(pixelRow);
-
-
-    let pixelRowRef = document.querySelector('#pixel-board').lastChild;
-    for (let index2 = 0; index2 < boardSize; index2 += 1) {
-      let pixel = document.createElement('div');
-      pixel.className = 'pixel';
-      pixelRowRef.appendChild(pixel);
-    }
-  }
+  createBoard(boardSize);
   let pixelList = document.querySelectorAll('.pixel');
   pixelList.forEach(function (elem) {
     elem.addEventListener('click', function () {
@@ -67,6 +67,9 @@ function createPixelBoard2() {
     });
   });
 };
+
+const sizeButton = document.getElementById('generate-board');
+sizeButton.addEventListener('click', customBoard);
 
 function checkBoardSize(number) {
   if (number < 5) {
@@ -77,6 +80,10 @@ function checkBoardSize(number) {
   }
   return number;
 }
+
+
+
+
 
 //-------refatorar ------
 
@@ -114,6 +121,7 @@ color4.addEventListener('click', function () {
   color4.classList.add('selected');
 });
 
+// ---------------------
 
 // Cria um eventListener para o botão de limpar o board. Aplica background = white
 
@@ -126,7 +134,4 @@ resetButton.addEventListener('click', function () {
   }
 })
 
-function deleteBoard() {
-  let getBoard = document.getElementById('pixel-board')
-  getBoard.innerHTML = '';
-}
+
