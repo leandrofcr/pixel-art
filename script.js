@@ -1,4 +1,4 @@
-// Define a cor preta como inicial ao carregara página
+// DEFINE A COR PRETA COMO A COR INICIAL
 function initialSetup() {
   document.querySelector('#color1').classList.add('selected');
 }
@@ -12,7 +12,10 @@ function selectedColorEvent(elem) {
   });
 }
 
-// Cria um board de tamanho nxn. Onde n é o parametro de entrada
+// REFERENCIA: https://www.w3schools.com/jsref/jsref_getcomputedstyle.asp
+// ACESSO EM 09/03/2021
+
+// CRIA UM BOARD DE TAMANHO NXN. ONDE N É O PARMETRO DE ENTRADA
 function createBoard(boardSize) {
   const pixelBoard = document.querySelector('#pixel-board');
 
@@ -30,7 +33,7 @@ function createBoard(boardSize) {
   }
 }
 
-// Criar o board padrao de tamanho 5x5
+// CRIA UM BOARD PADRÃO 5X5
 function defaultBoard() {
   createBoard(5);
   const pixelList = document.querySelectorAll('.pixel');
@@ -38,13 +41,13 @@ function defaultBoard() {
 }
 defaultBoard();
 
-// Deleta o board atual para criacao de um com tamanho personalizado
+// DELETA O BOARD ATUAL PARA CRIAÇÃO DE UM NOVO
 function deleteBoard() {
   const getBoard = document.getElementById('pixel-board');
   getBoard.innerHTML = '';
 }
 
-// Verifica se o tamanho do board está entre 5 e 50
+// VERIFICA SE O TAMANHO DO BOARD ESTÁ ENTRE 5 E 50
 function checkBoardSize(number) {
   if (number < 5) {
     return 5;
@@ -55,7 +58,7 @@ function checkBoardSize(number) {
   return number;
 }
 
-// Cria o board conforme tamanho inserido no input
+// CRIA UM BOARD COM O TAMANHO INSERIDO NO INPUT
 function customBoard() {
   deleteBoard();
   const inputSize = document.getElementById('board-size').value;
@@ -73,12 +76,16 @@ function customBoard() {
 const sizeButton = document.getElementById('generate-board');
 sizeButton.addEventListener('click', customBoard);
 
+// ------------------------------------------------------
+
+// RECUPERA OS ELEMENTOS DAS PALETAS DE CORES
 const colorsList = document.querySelectorAll('.color');
 const color1 = document.querySelector('#color1');
 const color2 = document.querySelector('#color2');
 const color3 = document.querySelector('#color3');
 const color4 = document.querySelector('#color4');
 
+// CRIA UM EVENT LISTENER PARA CADA COR DA PALETA DE COR
 function color1Event() {
   for (let index = 0; index < colorsList.length; index += 1) {
     colorsList[index].classList.remove('selected');
@@ -110,8 +117,9 @@ function color4Event() {
   color4.classList.add('selected');
 }
 color4.addEventListener('click', color4Event);
+// ------------------------------------------------------
 
-// Cria um eventListener para o botão de limpar o board. Aplica background = white
+// CRIA O EVENT LISTENER PARA O BOTÃO DE LIMPAR O BOARD
 const resetButton = document.getElementById('clear-board');
 
 function resetBoard() {
@@ -122,3 +130,16 @@ function resetBoard() {
 }
 
 resetButton.addEventListener('click', resetBoard);
+
+// GERA A PALETA DE CORES ALEATORIAMENTE
+
+const randomColor2 = Math.floor(Math.random() * 16777215).toString(16);
+const randomColor3 = Math.floor(Math.random() * 16777215).toString(16);
+const randomColor4 = Math.floor(Math.random() * 16777215).toString(16);
+
+// REFERENCIA: https://css-tricks.com/snippets/javascript/random-hex-color/
+// ACESSO EM 09/03/2021
+
+color2.style.backgroundColor = `#${randomColor2}`;
+color3.style.backgroundColor = `#${randomColor3}`;
+color4.style.backgroundColor = `#${randomColor4}`;
