@@ -1,5 +1,4 @@
 #color-palette {
-  display: inline-block;
   padding: 10px;
   display: table;
 }
@@ -57,13 +56,14 @@
   background-color: white;
 }
 
-#board-size{
+#board-size {
   width: 70px;
   height: 20px;
   font-size: 20px;
   display: inline-block;
 }
-#generate-board{
+
+#generate-board {
   width: 100px;
   display: inline-block;
 }

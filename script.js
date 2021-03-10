@@ -5,10 +5,8 @@ function initialSetup() {
   color1.classList.add('selected');
 }
 
-
 let sizeButton = document.getElementById('generate-board');
 sizeButton.addEventListener('click', createPixelBoard2)
-
 
 // Criar o board padrao de tamanho 5x5
 
@@ -19,8 +17,6 @@ function createPixelBoardDefault() {
     let pixelRow = document.createElement('div');
     pixelRow.className = 'pixel-row';
     pixelBoard.appendChild(pixelRow);
-
-
     let pixelRowRef = document.querySelector('#pixel-board').lastChild;
     for (let index2 = 0; index2 < 5; index2 += 1) {
       let pixel = document.createElement('div');
@@ -30,7 +26,6 @@ function createPixelBoardDefault() {
   }
 
   let pixelList = document.querySelectorAll('.pixel');
-
   pixelList.forEach(function (elem) {
     elem.addEventListener('click', function () {
       elem.style.backgroundColor = window.getComputedStyle(document.querySelector('.selected'), null).getPropertyValue('background-color');
@@ -44,12 +39,13 @@ createPixelBoardDefault();
 
 function createPixelBoard2() {
   deleteBoard();
-  let boardSize = document.getElementById('board-size').value;
+  let inputSize = document.getElementById('board-size').value;
   let pixelBoard = document.querySelector('#pixel-board');
-  
-  if (boardSize ===''){
+
+  if (inputSize === '') {
     alert('Board inválido!')
   }
+  boardSize = checkBoardSize(inputSize);
 
   for (let index = 0; index < boardSize; index += 1) {
     let pixelRow = document.createElement('div');
@@ -72,6 +68,15 @@ function createPixelBoard2() {
   });
 };
 
+function checkBoardSize(number) {
+  if (number < 5) {
+    return 5;
+  }
+  if (number > 50) {
+    return 50;
+  }
+  return number;
+}
 
 //-------refatorar ------
 
@@ -123,5 +128,5 @@ resetButton.addEventListener('click', function () {
 
 function deleteBoard() {
   let getBoard = document.getElementById('pixel-board')
-  getBoard.innerHTML= '';
+  getBoard.innerHTML = '';
 }
