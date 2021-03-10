@@ -91,7 +91,7 @@ function changeClassToSelected() {
   currentSelected.classList.remove('selected');
   this.classList.add('selected');
 }
-// REFERENCIA: https://pt.stackoverflow.com/questions/50138/adicionar-evento-a-m%C3%BAltiplos-elementos-sem-ser-dentro-de-um-loop-for
+// REFERÊNCIA: https://pt.stackoverflow.com/questions/50138/adicionar-evento-a-m%C3%BAltiplos-elementos-sem-ser-dentro-de-um-loop-for
 // REFERENCIA: https://desenvolvimentoparaweb.com/javascript/this-javascript-dominando/
 // ACESSO EM 09/03/2021
 
@@ -120,10 +120,10 @@ const randomColor2 = Math.floor(Math.random() * 16777215).toString(16);
 const randomColor3 = Math.floor(Math.random() * 16777215).toString(16);
 const randomColor4 = Math.floor(Math.random() * 16777215).toString(16);
 
-// REFERENCIA: https://css-tricks.com/snippets/javascript/random-hex-color/
-// ACESSO EM 09/03/2021
-
 color2.style.backgroundColor = `#${randomColor2}`;
 color3.style.backgroundColor = `#${randomColor3}`;
 color4.style.backgroundColor = `#${randomColor4}`;
+
+// REFERÊNCIA: https://css-tricks.com/snippets/javascript/random-hex-color/
+// ACESSO EM 09/03/2021
 // ----------------------------------------------------------------------
