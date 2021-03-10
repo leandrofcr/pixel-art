@@ -14,6 +14,7 @@ function selectedColorEvent(elem) {
 
 // REFERENCIA: https://www.w3schools.com/jsref/jsref_getcomputedstyle.asp
 // ACESSO EM 09/03/2021
+// ----------------------------------------------------------------------
 
 // CRIA UM BOARD DE TAMANHO NXN. ONDE N É O PARMETRO DE ENTRADA
 function createBoard(boardSize) {
@@ -76,48 +77,30 @@ function customBoard() {
 const sizeButton = document.getElementById('generate-board');
 sizeButton.addEventListener('click', customBoard);
 
-// ------------------------------------------------------
+// ----------------------------------------------------------------------
 
 // RECUPERA OS ELEMENTOS DAS PALETAS DE CORES
-const colorsList = document.querySelectorAll('.color');
 const color1 = document.querySelector('#color1');
 const color2 = document.querySelector('#color2');
 const color3 = document.querySelector('#color3');
 const color4 = document.querySelector('#color4');
 
 // CRIA UM EVENT LISTENER PARA CADA COR DA PALETA DE COR
-function color1Event() {
-  for (let index = 0; index < colorsList.length; index += 1) {
-    colorsList[index].classList.remove('selected');
-  }
-  color1.classList.add('selected');
+function changeClassToSelected() {
+  const currentSelected = document.querySelector('.selected');
+  currentSelected.classList.remove('selected');
+  this.classList.add('selected');
 }
-color1.addEventListener('click', color1Event);
+// REFERENCIA: https://pt.stackoverflow.com/questions/50138/adicionar-evento-a-m%C3%BAltiplos-elementos-sem-ser-dentro-de-um-loop-for
+// REFERENCIA: https://desenvolvimentoparaweb.com/javascript/this-javascript-dominando/
+// ACESSO EM 09/03/2021
 
-function color2Event() {
-  for (let index = 0; index < colorsList.length; index += 1) {
-    colorsList[index].classList.remove('selected');
-  }
-  color2.classList.add('selected');
-}
-color2.addEventListener('click', color2Event);
+color1.addEventListener('click', changeClassToSelected);
+color2.addEventListener('click', changeClassToSelected);
+color3.addEventListener('click', changeClassToSelected);
+color4.addEventListener('click', changeClassToSelected);
 
-function color3Event() {
-  for (let index = 0; index < colorsList.length; index += 1) {
-    colorsList[index].classList.remove('selected');
-  }
-  color3.classList.add('selected');
-}
-color3.addEventListener('click', color3Event);
-
-function color4Event() {
-  for (let index = 0; index < colorsList.length; index += 1) {
-    colorsList[index].classList.remove('selected');
-  }
-  color4.classList.add('selected');
-}
-color4.addEventListener('click', color4Event);
-// ------------------------------------------------------
+// ----------------------------------------------------------------------
 
 // CRIA O EVENT LISTENER PARA O BOTÃO DE LIMPAR O BOARD
 const resetButton = document.getElementById('clear-board');
@@ -143,3 +126,4 @@ const randomColor4 = Math.floor(Math.random() * 16777215).toString(16);
 color2.style.backgroundColor = `#${randomColor2}`;
 color3.style.backgroundColor = `#${randomColor3}`;
 color4.style.backgroundColor = `#${randomColor4}`;
+// ----------------------------------------------------------------------
