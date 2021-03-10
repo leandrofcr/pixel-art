@@ -1,19 +1,18 @@
 // Define a cor preta como inicial ao carregara página
-
 function initialSetup() {
   document.querySelector('#color1').classList.add('selected');
 }
 window.onload = initialSetup;
 
 function selectedColorEvent(elem) {
-  elem.addEventListener('click', function changeColor() {
+  const pixelElem = elem;
+  elem.addEventListener('click', () => {
     const backgroundRef = window.getComputedStyle(document.querySelector('.selected'), null);
-    elem.style.backgroundColor = backgroundRef.getPropertyValue('background-color');
+    pixelElem.style.backgroundColor = backgroundRef.getPropertyValue('background-color');
   });
 }
 
 // Cria um board de tamanho nxn. Onde n é o parametro de entrada
-
 function createBoard(boardSize) {
   const pixelBoard = document.querySelector('#pixel-board');
 
@@ -32,7 +31,6 @@ function createBoard(boardSize) {
 }
 
 // Criar o board padrao de tamanho 5x5
-
 function defaultBoard() {
   createBoard(5);
   const pixelList = document.querySelectorAll('.pixel');
@@ -41,14 +39,12 @@ function defaultBoard() {
 defaultBoard();
 
 // Deleta o board atual para criacao de um com tamanho personalizado
-
 function deleteBoard() {
   const getBoard = document.getElementById('pixel-board');
   getBoard.innerHTML = '';
 }
 
 // Verifica se o tamanho do board está entre 5 e 50
-
 function checkBoardSize(number) {
   if (number < 5) {
     return 5;
@@ -60,7 +56,6 @@ function checkBoardSize(number) {
 }
 
 // Cria o board conforme tamanho inserido no input
-
 function customBoard() {
   deleteBoard();
   const inputSize = document.getElementById('board-size').value;
@@ -77,8 +72,6 @@ function customBoard() {
 
 const sizeButton = document.getElementById('generate-board');
 sizeButton.addEventListener('click', customBoard);
-
-// -------refatorar ------
 
 const colorsList = document.querySelectorAll('.color');
 const color1 = document.querySelector('#color1');
@@ -119,7 +112,6 @@ function color4Event() {
 color4.addEventListener('click', color4Event);
 
 // Cria um eventListener para o botão de limpar o board. Aplica background = white
-
 const resetButton = document.getElementById('clear-board');
 
 function resetBoard() {
