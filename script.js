@@ -1,7 +1,7 @@
 // Define a cor preta como inicial ao carregara página
 
 function initialSetup() {
-  color1.classList.add('selected');
+  document.querySelector('#color1').classList.add('selected');
 }
 window.onload = initialSetup;
 
@@ -47,29 +47,7 @@ function deleteBoard() {
   getBoard.innerHTML = '';
 }
 
-// Cria o board conforme tamanho inserido no input
-
-function customBoard() {
-  deleteBoard();
-  const inputSize = document.getElementById('board-size').value;
-
-
-  if (inputSize === '') {
-    alert('Board inválido!')
-  }
-  boardSize = checkBoardSize(inputSize);
-
-  createBoard(boardSize);
-  let pixelList = document.querySelectorAll('.pixel');
-  pixelList.forEach(function (elem) {
-    elem.addEventListener('click', function () {
-      elem.style.backgroundColor = window.getComputedStyle(document.querySelector('.selected'), null).getPropertyValue('background-color');
-    });
-  });
-};
-
-const sizeButton = document.getElementById('generate-board');
-sizeButton.addEventListener('click', customBoard);
+// Verifica se o tamanho do board está entre 5 e 50
 
 function checkBoardSize(number) {
   if (number < 5) {
@@ -81,57 +59,74 @@ function checkBoardSize(number) {
   return number;
 }
 
+// Cria o board conforme tamanho inserido no input
 
+function customBoard() {
+  deleteBoard();
+  const inputSize = document.getElementById('board-size').value;
 
+  if (inputSize === '') {
+    alert('Board inválido!');
+  }
+  const boardSize = checkBoardSize(inputSize);
 
+  createBoard(boardSize);
+  const pixelList = document.querySelectorAll('.pixel');
+  pixelList.forEach(selectedColorEvent);
+}
 
-//-------refatorar ------
+const sizeButton = document.getElementById('generate-board');
+sizeButton.addEventListener('click', customBoard);
 
-let colorsList = document.querySelectorAll('.color');
-let color1 = document.querySelector('#color1');
-let color2 = document.querySelector('#color2');
-let color3 = document.querySelector('#color3');
-let color4 = document.querySelector('#color4');
+// -------refatorar ------
 
-color1.addEventListener('click', function () {
+const colorsList = document.querySelectorAll('.color');
+const color1 = document.querySelector('#color1');
+const color2 = document.querySelector('#color2');
+const color3 = document.querySelector('#color3');
+const color4 = document.querySelector('#color4');
+
+function color1Event() {
   for (let index = 0; index < colorsList.length; index += 1) {
     colorsList[index].classList.remove('selected');
   }
   color1.classList.add('selected');
-});
+}
+color1.addEventListener('click', color1Event);
 
-color2.addEventListener('click', function () {
+function color2Event() {
   for (let index = 0; index < colorsList.length; index += 1) {
     colorsList[index].classList.remove('selected');
   }
   color2.classList.add('selected');
-});
+}
+color2.addEventListener('click', color2Event);
 
-color3.addEventListener('click', function () {
+function color3Event() {
   for (let index = 0; index < colorsList.length; index += 1) {
     colorsList[index].classList.remove('selected');
   }
   color3.classList.add('selected');
-});
+}
+color3.addEventListener('click', color3Event);
 
-color4.addEventListener('click', function () {
+function color4Event() {
   for (let index = 0; index < colorsList.length; index += 1) {
     colorsList[index].classList.remove('selected');
   }
   color4.classList.add('selected');
-});
-
-// ---------------------
+}
+color4.addEventListener('click', color4Event);
 
 // Cria um eventListener para o botão de limpar o board. Aplica background = white
 
-let resetButton = document.getElementById('clear-board');
+const resetButton = document.getElementById('clear-board');
 
-resetButton.addEventListener('click', function () {
-  let pixelList = document.querySelectorAll('.pixel');
+function resetBoard() {
+  const pixelList = document.querySelectorAll('.pixel');
   for (let index = 0; index < pixelList.length; index += 1) {
     pixelList[index].style.backgroundColor = 'white';
   }
-})
+}
 
-
+resetButton.addEventListener('click', resetBoard);
