@@ -12,20 +12,7 @@
 
 #color1 {
   background-color: black;
-  display: table-cell;
-}
-
-#color2 {
-  display: table-cell;
-}
-
-#color3 {
-  display: table-cell;
-}
-
-#color4 {
-  display: table-cell;
-}
+ }
 
 #clear-board {
   margin-top: 50px;

@@ -92,7 +92,7 @@ function changeClassToSelected() {
   this.classList.add('selected');
 }
 // REFERÊNCIA: https://pt.stackoverflow.com/questions/50138/adicionar-evento-a-m%C3%BAltiplos-elementos-sem-ser-dentro-de-um-loop-for
-// REFERENCIA: https://desenvolvimentoparaweb.com/javascript/this-javascript-dominando/
+// REFERÊNCIA: https://desenvolvimentoparaweb.com/javascript/this-javascript-dominando/
 // ACESSO EM 09/03/2021
 
 color1.addEventListener('click', changeClassToSelected);
