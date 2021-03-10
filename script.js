@@ -6,13 +6,37 @@ function initialSetup() {
 
 
 let sizeButton = document.getElementById('generate-board');
-sizeButton.addEventListener('click', createPixelBoard)
+sizeButton.addEventListener('click', createPixelBoard2)
+
+function createPixelBoardDefault() {
+  let pixelBoard = document.querySelector('#pixel-board');
+
+  for (let index = 0; index < 5; index += 1) {
+    let pixelRow = document.createElement('div');
+    pixelRow.className = 'pixel-row';
+    pixelBoard.appendChild(pixelRow);
 
 
-function createPixelBoard() {
+    let pixelRowRef = document.querySelector('#pixel-board').lastChild;
+    for (let index2 = 0; index2 < 5; index2 += 1) {
+      let pixel = document.createElement('div');
+      pixel.className = 'pixel';
+      pixelRowRef.appendChild(pixel);
+    }
+  }
+
+  let pixelList = document.querySelectorAll('.pixel');
+
+  pixelList.forEach(function (elem) {
+    elem.addEventListener('click', function () {
+      elem.style.backgroundColor = window.getComputedStyle(document.querySelector('.selected'), null).getPropertyValue('background-color');
+    });
+  });
+};
+createPixelBoardDefault();
+
+function createPixelBoard2() {
   let boardSize = document.getElementById('board-size').value;
-  console.log(boardSize);
-
   let pixelBoard = document.querySelector('#pixel-board');
 
   for (let index = 0; index < boardSize; index += 1) {
@@ -37,8 +61,6 @@ function createPixelBoard() {
     });
   });
 };
-
-
 
 
 // function createPixelBoard() {
