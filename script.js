@@ -86,10 +86,10 @@ const color3 = document.querySelector('#color3');
 const color4 = document.querySelector('#color4');
 
 // CRIA UM EVENT LISTENER PARA CADA COR DA PALETA DE COR
-function changeClassToSelected() {
+function changeClassToSelected(event) {
   const currentSelected = document.querySelector('.selected');
   currentSelected.classList.remove('selected');
-  this.classList.add('selected');
+  event.target.classList.add('selected');
 }
 // REFERÊNCIA: https://pt.stackoverflow.com/questions/50138/adicionar-evento-a-m%C3%BAltiplos-elementos-sem-ser-dentro-de-um-loop-for
 // REFERÊNCIA: https://desenvolvimentoparaweb.com/javascript/this-javascript-dominando/
