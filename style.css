@@ -1,6 +1,17 @@
 body {
   font-family: DotGothic16, sans-serif;
   font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(57, 57, 119);
+}
+
+main {
+  padding: 20px 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 26px -2px rgb(17, 17, 17);
+  background-color:whitesmoke;
 }
 
 #color-palette {
